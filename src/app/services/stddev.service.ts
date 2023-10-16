@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class StddevService {
-  private readonly _baseURL: string = 'http://localhost:8080';
+  private readonly _baseURL: string = 'https://node-express-service-luiscocotleuv.cloud.okteto.net';
 
   constructor(private http: HttpClient) {}
 
