@@ -7,8 +7,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MediaService {
-  private readonly _devHoursUrl = 'http://localhost:8080/hours';
-  private readonly _proxySizeUrl = 'http://localhost:8080/size';
+  private readonly _devHoursUrl = 'https://node-express-service-luiscocotleuv.cloud.okteto.net/hours';
+  private readonly _proxySizeUrl = 'https://node-express-service-luiscocotleuv.cloud.okteto.net/size';
 
   constructor(private http: HttpClient) {}
 
