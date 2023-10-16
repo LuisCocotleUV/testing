@@ -29,3 +29,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Branch develop creado
 ## Branch media creado
 ## Branch stddev creado
+## Merge a release
