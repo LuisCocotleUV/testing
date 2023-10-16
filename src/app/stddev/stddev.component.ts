@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StddevService } from '../services/stddev.service';
+import { calcularMedia } from '../media/media.component';
 
 @Component({
   selector: 'app-stddev',
@@ -23,7 +24,7 @@ export class StddevComponent implements OnInit {
 
   private calcularDesviacionEstandar(data: number[]): number {
     const n = data.length;
-    const mean = data.reduce((acc, val) => acc + val, 0) / n;
+    const mean = calcularMedia(data);
     const sumSquaredDiff = data.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0);
     return Math.sqrt(sumSquaredDiff / (n - 1));
   }
