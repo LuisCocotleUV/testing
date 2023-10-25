@@ -1,13 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MediaService } from '../services/media.service';
 
 @Component({
   selector: 'app-media',
-  templateUrl: './media.component.html',
-  styleUrls: ['./media.component.css']
+  template: ''
 })
-export class MediaComponent {
-  calculateMean(data: number[]): number {
-    let sum = data.reduce((a, b) => a + b, 0);
-    return sum / data.length;
+export class MediaComponent implements OnInit {
+  devHoursAverage = 0;
+  proxySizeAverage = 0;
+
+  constructor(private mediaService: MediaService) {}
+
+  ngOnInit(): void {
+    this.mediaService.getDevHours().subscribe(data => {
+      this.devHoursAverage = calcularMedia(data);
+    });
+
+    this.mediaService.getProxySize().subscribe(data => {
+      this.proxySizeAverage = calcularMedia(data);
+    });
   }
+}
+
+export function calcularMedia(data: number[]): number {
+    return data.reduce((acc, val) => acc + val, 0) / data.length;
 }
