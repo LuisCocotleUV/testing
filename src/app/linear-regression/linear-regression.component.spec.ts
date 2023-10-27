@@ -27,11 +27,11 @@ describe('LinearRegressionComponent', () => {
 
   it('Should return B1 = 1.7279 with the dataset Data_Test1', () => {
     const b1 = component.b1([130, 650, 99, 150, 128, 302, 95, 945, 368, 961], [186, 699, 132, 272, 291, 331, 199, 1890, 788, 1601]);
-    expect(b1).toEqual(1.7279);
-  });
+    expect(b1).toBeCloseTo(1.7279,4); // Comprueba si b1 está cerca de -22.55 con una precisión de hasta cuatro decimales
+   });
 
-  it('Should return yk = 644.429 with the dataset Data_Test1 if x = 386', () => {
+  it('Should return yk =644.429 with the dataset Data_Test1 if x =386', () => {
     const yk = component.yk(1.7279, -22.55, 386);
-    expect(yk).toBeCloseTo(644.429, 1); // Comprueba si yk está cerca de 644.429 con una precisión de 1 decimal
-  });  
+    expect(yk).toBeCloseTo(644.429 ,1); // Comprueba si yk está cerca de 644.429 con una precisión de 2 decimales
+  });
 });

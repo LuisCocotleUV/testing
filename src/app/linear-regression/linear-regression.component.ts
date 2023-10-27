@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LinearRegressionService } from '../services/linear-regression.service';
+import { sumX, sumYY, sumXY } from '../common/calculate';
 
 @Component({
   selector: 'app-linear-regression',
@@ -25,31 +26,13 @@ export class LinearRegressionComponent {
   }
 
   b1(array1:number[],array2:number[]){
-    let XY:number[]=[];
-    let x2:number[]=[];
-    let y2:number[]=[];
-    let sumx:number=0;
-    let sumy:number=0;
-    let sumXY:number=0;
-    let sumx2:number=0;
-    let sumy2:number=0;
-    for(let i=0;i<array1.length;i++){
-        XY[i]=array1[i]*array2[i];
-        x2[i]=array1[i]*array1[i];
-        y2[i]=array2[i]*array2[i];
-    }
+    let XY = sumXY(array1, array2);
+    let x2 = sumX(array1.map(x => x * x));
+    let y2 = sumYY(array2);
+    let sumx = sumX(array1) / array1.length;
+    let sumy = sumX(array2) / array2.length;
 
-    for(let i=0;i<array1.length;i++){
-        sumx=sumx+array1[i];
-        sumy=sumy+array2[i];
-        sumXY=sumXY+XY[i];
-        sumx2=sumx2+x2[i];
-        sumy2=sumy2+y2[i];
-    }
-    
-    sumx=sumx/10;
-    sumy=sumy/10;
-    let b1:number=(((sumXY)-(10*sumx*sumy))/((sumx2)-(10*(sumx**2))));
+    let b1:number=(((XY)-(array1.length * sumx * sumy))/((x2)-(array1.length * (sumx**2))));
     return parseFloat(b1.toFixed(4));
   }
 
