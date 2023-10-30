@@ -12,7 +12,7 @@ import { LinearRegressionComponent } from './linear-regression/linear-regression
     AppComponent,
     MediaComponent,
     StddevComponent,
-    LinearRegressionComponent
+    LinearRegressionComponent,
   ],
   imports: [
     BrowserModule,
